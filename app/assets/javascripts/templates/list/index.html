@@ -1,0 +1,38 @@
+<div ng-controller="MainController">
+  <table ng-repeat="list in lists">
+    <thead>
+      <tr>
+        <th style="text-align: left">{{ list.title }} - by: {{ list.user.username }}</th>
+      </tr>
+    </thead>
+      <tr>
+        <th style="text-align: left">Title</th>
+        <th style="text-align: right">Location</th>
+        <th style="text-align: right">Description</th>
+        <th style="text-align: right">Date</th>
+        <th style="text-align: right">Completed?</th>
+      </tr>
+    <tbody>
+      <tr ng-repeat="list_item in list.list_items">
+        <td style="text-align: left">{{ list_item.title}}</td>
+        <td style="text-align: left">{{ list_item.location}}</td>
+        <td style="text-align: left">{{ list_item.description}}</td>
+        <td style="text-align: left">{{ list_item.date}}</td>
+        <td style="text-align: left">{{ list_item.completed}}</td>
+       </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <form ng-submit="addListItem()"
+    style="margin-top:30px;">
+    <h3>Add a new comment</h3>
+
+    <div class="form-group">
+      <input type="text"
+      class="form-control"
+      placeholder="item"
+      ng-model="title"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>

@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
+
+gem 'sprockets', '2.12.3'
+
+gem 'angular-rails-templates'
+gem 'bower-rails'
 gem 'angularjs-rails'
 gem 'active_model_serializers'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
