@@ -1,15 +1,16 @@
 angular
-  .module('app', ['ui.router', 'ngResource', 'templates', 'Devise'])
-    .config(function ($stateProvider, $urlRouterProvider){
+  .module('app', ['ui.router', 'templates'])
+  .config(function ($stateProvider, $urlRouterProvider){
+    $urlRouterProvider.otherwise("/");
       $stateProvider
         .state('manila', {
           url: '/',
           templateUrl: 'manila.html',
-          controller: 'ManilaController as ctrl'
+          controller: 'MainController'
         })
         .state('lists', {
           url: '/lists/{id}',
-          templateUrl: '/lists.html',
+          templateUrl: 'lists/_lists.html',
           controller: 'ListsController'
         })
         .state('login',{
@@ -18,7 +19,7 @@ angular
           controller: 'AuthController',
           onEnter: ['$state', 'Auth', function($state, Auth){
             Auth.currentUser().then(function(){
-              $state.go('manila');
+              $state.go('/');
             })
           }]
         })
@@ -28,11 +29,8 @@ angular
           controller: 'AuthController',
           onEnter: ['$state', 'Auth', function($state, Auth){
             Auth.currentUser().then(function(){
-              $state.go('manila');
+              $state.go('/');
             })
           }]
-        });
-
-
-        $urlRouterProvider.otherwise('/');
+        })
     });

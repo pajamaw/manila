@@ -1,5 +1,6 @@
 function MainController($scope, lists) {
   $scope.lists = lists.lists
+  
   $scope.lists = [
   {title: 'woot', list_items: [
     {title: 'listitem', location: 'nyc', date: 'today', description: 'Sweet event', completed: true}, 
@@ -33,7 +34,7 @@ function MainController($scope, lists) {
 
 
 
-};
+}
 
 angular
   .module('app', ['lists'])

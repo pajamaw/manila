@@ -1,0 +1,26 @@
+<div class="page-header">
+<h3>{{list.title}}</h3>
+</div>
+  <table>
+    <tbody>
+      <tr ng-repeat="list_item in list.list_items">
+        <td style="text-align: left">{{ list_item.title}}</td>
+        <td style="text-align: left">{{ list_item.location}}</td>
+        <td style="text-align: left">{{ list_item.description}}</td>
+        <td style="text-align: left">{{ list_item.date}}</td>
+        <td style="text-align: left">{{ list_item.completed}}</td>
+       </tr>
+    </tbody>
+  </table>
+  <form ng-submit="addListItem()"
+    style="margin-top:30px;">
+    <h3>Add a new comment</h3>
+
+    <div class="form-group">
+      <input type="text"
+      class="form-control"
+      placeholder="item"
+      ng-model="title"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>

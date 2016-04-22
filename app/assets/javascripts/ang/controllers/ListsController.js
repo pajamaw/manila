@@ -14,7 +14,7 @@ function ListsController($scope, $stateParams, lists){
     });
     $scope.title = '';
   };
-  
+
 }
 
 angular
