@@ -1,34 +1,40 @@
-class Api::ListController <Api::BaseController
+module Api
+    class ListsController <ApplicationController
+    def index
+      @lists = List.all
+      render json: List.all
+    end
 
-  def index
-    render json: List.all
-  end
+    def show
+      render json: list
+    end
 
-  def show
-    render json: list
-  end
+    def create 
+      @list = List.new(list_params)
+      if @list.save
+        respond_to do |format|
+          format.json {render json: @list}
+        end
+      end
+    end
 
-  def create 
-    new_list = current_user.list.create!(list_params)
-    render json: new_list
-  end
+    def update
+      list.update_attributes(list_params)
+      render nothing: true
+    end
 
-  def update
-    list.update_attributes(list_params)
-    render nothing: true
-  end
+    def destroy
+      list.destroy
+      render nothing: true
+    end
 
-  def destroy
-    list.destroy
-    render nothing: true
-  end
+    private
+    def list
+      @list ||= List.find(params[:id])
+    end
 
-  private
-  def list
-    @list ||= List.find(params[:id])
-  end
-
-  def list_params
-    params.require(:list).permit(:title)
+    def list_params
+      params.require(:list).permit(:title)
+    end
   end
 end

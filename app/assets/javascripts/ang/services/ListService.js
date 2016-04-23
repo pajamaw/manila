@@ -1,22 +1,9 @@
-app.factory('List', ['$http', function($http){
-  var o ={
-    lists: []
-  };
-
-  o.getAll = function() {
-    return $http.get('/api/lists.json').success(function(data){
-      angular.copy(data, o.lists);
-    });
-  };
-}])
+app.factory('List', function List($resource){
 
 
-//app.factory('List', List);
-//function List($resource) {
-
- // var List = $resource('/api/lists/:id', {id: '@id'}, {
- //   update: { method: 'PUT' },
- //   delete: { method: 'DELETE' },
- // });
-
-//  return List;
+  var List = $resource('/api/lists/:id.json', {id: '@id'}, {
+    query: {method: 'GET'},
+    update: {method: 'PUT'}
+  });
+  return List;
+});

@@ -1,4 +1,4 @@
-class Api::ListItemsController <Api::BaseController
+class Api::ListItemsController < Api::BaseController
 
   def index
     render json: list.list_items

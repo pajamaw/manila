@@ -5,20 +5,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('manila', {
       url: '/',
       templateUrl: 'manila.html',
-      contorller: 'MainController', 
-      resolve: {
-        postPromise: ['lists', function(lists){
-          return lists.getAll();
-        }]
-      }
+      controller: 'MainController as ctrl'
     })
-    .state('lists', {
-      url: '/lists/{id}',
-      templateUrl: 'lists/_lists.html',
-      controller: 'ListsController'
+    .state('manila.listsadd', {
+      url: '/lists/:id',
+      templateUrl: 'manila/listsadd.html',
+      controller: 'ListsController as ctrl'
     })
     .state('login',{
-      url: '/login',
+      url: 'login',
       templateUrl: 'auth/_login.html',
       controller: 'AuthController',
       onEnter: ['$state', 'Auth', function($state, Auth){
@@ -28,7 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }]
     })
     .state('register',{
-      url: '/register',
+      url: 'register',
       templateUrl: 'auth/_register.html',
       controller: 'AuthController',
       onEnter: ['$state', 'Auth', function($state, Auth){

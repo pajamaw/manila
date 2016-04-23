@@ -1,18 +1,20 @@
-app.controller('ListsController', function ListsController($scope, $stateParams, lists){
+app.controller('ListsController', ListsController);
+function ListsController(List, $stateParams){
+  var ctrl = this;
 
-  $scope.list = lists.lists[$stateParams.id];
+  ctrl.list = List.get({id: $stateParams.id});
 
-  $scope.addListItem = function(){
-    if($scope.location === '') {return;}
-    $scope.list.list_items.push({
+  ctrl.addListItem = function(){
+    if(ctrl.list.location === '') {return;}
+    ctrl.list.list.list_items.push({
       title: 'new title',
-      location: $scope.location,
+      location: ctrl.list.location,
       user_id: 1, 
       date: 'today', 
       description: 'Sweet event', 
       completed: false
     });
-    $scope.location = '';
+    ctrl.location = '';
   };
 
-});
+};

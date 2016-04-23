@@ -1,15 +1,13 @@
-<div ng-controller="MainController">
   <div class="page-header">
       <h1>Manila</h1>
 
   </div>
   <div>
-    <table ng-repeat="list in lists">
-      <thead>
+    <table ng-repeat="list in ctrl.lists.lists" class="table table-bordered table-striped table-fixed-header">
+      <thead class="header">
         <tr>
-          <th style="text-align: left"><a href="#/lists/{{$index}}">{{ list.title }}</a> - by: {{ list.user.username }}</th>
+          <th style="text-align: left"><a ui-sref="manila.listsadd({id: list.id})">{{ list.title }}</a> - by: {{ list.user.username }}</th>
         </tr>
-      </thead>
         <tr>
           <th style="text-align: left">Title</th>
           <th style="text-align: right">Location</th>
@@ -17,6 +15,8 @@
           <th style="text-align: right">Date</th>
           <th style="text-align: right">Completed?</th>
         </tr>
+     </thead>
+
       <tbody>
         <tr ng-repeat="list_item in list.list_items">
           <td style="text-align: left">{{ list_item.title}}</td>
@@ -31,16 +31,14 @@
     </table>
     </div>
     <ui-view></ui-view>
-      <form ng-submit="addList()"
+      <form ng-submit="ctrl.addList()"
         style="margin-top:30px;">
-        <h3>Add a new post</h3>
+        <h3>Add a new list</h3>
 
-        <!--<div class="form-group">
+        <div class="form-group">
           <input type="text"
           class="form-control"
-          placeholder="Title"-->
-          <input ng-model="title"></input>
-        <!--</div>-->
-        <button type="submit" class="btn btn-primary">Post</button>
+          placeholder="Title"
+          ng-model="ctrl.list.title"></input>
+        <button type="submit" class="btn btn-primary">Create</button>
       </form>
-</div>
