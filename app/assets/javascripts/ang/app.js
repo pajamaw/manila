@@ -5,7 +5,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('manila', {
       url: '/',
       templateUrl: 'manila.html',
-      contorller: 'MainController'
+      contorller: 'MainController', 
+      resolve: {
+        postPromise: ['lists', function(lists){
+          return lists.getAll();
+        }]
+      }
     })
     .state('lists', {
       url: '/lists/{id}',

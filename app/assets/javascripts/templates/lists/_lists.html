@@ -1,14 +1,15 @@
+<div ng-controller="ListsController">
 <div class="page-header">
-<h3>{{list.title}}</h3>
+  <h3>{{list.title}}</h3>
 </div>
   <table>
     <tbody>
-      <tr ng-repeat="list_item in list.list_items">
-        <td style="text-align: left">{{ list_item.title}}</td>
-        <td style="text-align: left">{{ list_item.location}}</td>
-        <td style="text-align: left">{{ list_item.description}}</td>
-        <td style="text-align: left">{{ list_item.date}}</td>
-        <td style="text-align: left">{{ list_item.completed}}</td>
+      <tr ng-repeat="item in list.list_items">
+        <td style="text-align: left">{{ item.title}}</td>
+        <td style="text-align: left">{{ item.location}}</td>
+        <td style="text-align: left">{{ item.description}}</td>
+        <td style="text-align: left">{{ item.date}}</td>
+        <td style="text-align: left">{{ item.completed}}</td>
        </tr>
     </tbody>
   </table>
@@ -19,8 +20,9 @@
     <div class="form-group">
       <input type="text"
       class="form-control"
-      placeholder="item"
-      ng-model="title"></input>
+      placeholder="location"
+      ng-model="location"></input>
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
+</div>
