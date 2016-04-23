@@ -1,10 +1,8 @@
-function lists(){
+
+
+app.factory('lists', function(){
   var o = {
     lists: []
   };
   return o;
-};
-
-angular
-  .module('app', [])
-  .factory('lists', lists)
+});

@@ -1,26 +1,17 @@
+
 {
-  "name": "manila",
-  "homepage": "https://github.com/pajamaw/manila",
-  "authors": [
-    "pajamaw <pjpeterww@gmail.com>"
-  ],
-  "description": "",
-  "main": "",
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "vendor/assets/bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "angular": "^1.5.5",
-    "angular-ui-router": "^0.2.18",
-    "bootstrap": "^3.3.6",
-    "AngularDevise": "angular-devise#^1.3.0",
-    "angular-resource": "^1.5.5",
-    "angular-route": "^1.5.5"
+  "lib": {
+    "name": "bower-rails generated lib assets",
+    "dependencies": {
+      "angular": "v1.5.3",
+      "angular-ui-router": "latest",
+      "angular-devise": "latest",
+      "bootstrap" : "3.3.6",
+      "angular-resource": "v1.5.3"
+    }
+  },
+  "vendor": {
+    "name": "bower-rails generated vendor assets",
+    "dependencies": {}
   }
 }
