@@ -1,9 +1,8 @@
   <div class="page-header">
       <h1>Manila</h1>
-
   </div>
   <div>
-    <table ng-repeat="list in ctrl.lists.lists" class="table table-bordered table-striped table-fixed-header">
+    <table ng-repeat="list in ctrl.lists.lists track by $index" class="table table-bordered table-striped table-fixed-header">
       <thead class="header">
         <tr>
           <th style="text-align: left"><a ui-sref="manila.listsadd({id: list.id})">{{ list.title }}</a> - by: {{ list.user.username }}</th>
@@ -18,7 +17,7 @@
      </thead>
 
       <tbody>
-        <tr ng-repeat="list_item in list.list_items">
+        <tr ng-repeat="list_item in list.list_items track by $index">
           <td style="text-align: left">{{ list_item.title}}</td>
           <td style="text-align: left">{{ list_item.location}}</td>
           <td style="text-align: left">{{ list_item.description}}</td>
@@ -27,16 +26,17 @@
          </tr>
 
       </tbody>
+    <ui-view></ui-view>
 
     </table>
     </div>
-    <ui-view></ui-view>
       <form ng-submit="ctrl.addList()"
-        style="margin-top:30px;">
+        style="margin-top:30px;" >
         <h3>Add a new list</h3>
 
         <div class="form-group">
           <input type="text"
+          ng-pristine
           class="form-control"
           placeholder="Title"
           ng-model="ctrl.list.title"></input>

@@ -1,17 +1,7 @@
-<div class="page-header">
-  <h3>{{ ctrl.list.list.title }}</h3>asdfsa
+<div class="header">
+  <h3>{{ ctrl.list.list.title }}</h3>
 </div>
-  <table>
-    <tbody>
-      <tr ng-repeat="item in ctrl.list.list.list_items">
-        <td style="text-align: left">{{ item.title }}</td>
-        <td style="text-align: left">{{ item.location}}</td>
-        <td style="text-align: left">{{ item.description}}</td>
-        <td style="text-align: left">{{ item.date}}</td>
-        <td style="text-align: left">{{ item.completed}}</td>
-       </tr>
-    </tbody>
-  </table>
+
   <form ng-submit="ctrl.addListItem()"
     style="margin-top:30px;">
     <h3>Add a New Todo</h3>
@@ -20,7 +10,7 @@
       <input type="text"
       class="form-control"
       placeholder="location"
-      ng-model="ctrl.list.location"></input>
+      ng-model="ctrl.list_item.location"></input>
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
   </form>

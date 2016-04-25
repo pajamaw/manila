@@ -2,7 +2,7 @@ module Api
     class ListsController <ApplicationController
     def index
       @lists = List.all
-      render json: List.all
+      render json: @lists
     end
 
     def show
@@ -10,10 +10,10 @@ module Api
     end
 
     def create 
-      @list = List.new(list_params)
-      if @list.save
+      list = List.new(list_params)
+      if list.save
         respond_to do |format|
-          format.json {render json: @list}
+          format.json {render json: list}
         end
       end
     end
@@ -34,7 +34,7 @@ module Api
     end
 
     def list_params
-      params.require(:list).permit(:title)
+      params.require(:list).permit(:title, :list_items => [])
     end
   end
 end

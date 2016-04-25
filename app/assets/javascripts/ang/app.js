@@ -5,12 +5,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('manila', {
       url: '/',
       templateUrl: 'manila.html',
-      controller: 'MainController as ctrl'
+      controller: 'MainController as ctrl',
+        resolve: {
+        lists: function (List){
+          return List.query();
+        }
+      }
     })
     .state('manila.listsadd', {
       url: '/lists/:id',
       templateUrl: 'manila/listsadd.html',
-      controller: 'ListsController as ctrl'
+      controller: 'ListsController as ctrl', 
+        resolve: {
+        list_items: function (ListItem){
+        }
+      }
     })
     .state('login',{
       url: 'login',

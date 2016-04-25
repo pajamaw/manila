@@ -1,20 +1,21 @@
 app.controller('ListsController', ListsController);
-function ListsController(List, $stateParams){
+function ListsController(List, ListItem, $stateParams, $state, $location){
   var ctrl = this;
 
   ctrl.list = List.get({id: $stateParams.id});
 
-  ctrl.addListItem = function(){
-    if(ctrl.list.location === '') {return;}
-    ctrl.list.list.list_items.push({
-      title: 'new title',
-      location: ctrl.list.location,
-      user_id: 1, 
-      date: 'today', 
-      description: 'Sweet event', 
-      completed: false
+  ctrl.list_item = new ListItem();
+
+  ctrl.addListItem = function(list){
+    //if(ctrl.list_item.location === '') {return;}
+    ctrl.list_item.list_id = ctrl.list.list.id;
+    ctrl.list_item.$save(function(data){
+      $state.go($state.current,{}, {reload: true});
+
+      //$location.path('lists');
+    //ctrl.list = List.get();
+
     });
-    ctrl.location = '';
   };
 
 };

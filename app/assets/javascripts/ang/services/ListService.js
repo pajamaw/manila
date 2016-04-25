@@ -1,4 +1,6 @@
-app.factory('List', function List($resource){
+app.factory('List', List);
+
+function List($resource){
 
 
   var List = $resource('/api/lists/:id.json', {id: '@id'}, {
@@ -6,4 +8,4 @@ app.factory('List', function List($resource){
     update: {method: 'PUT'}
   });
   return List;
-});
+}
