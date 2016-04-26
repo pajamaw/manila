@@ -15,13 +15,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('manila.listsadd', {
       url: '/lists/:id',
       templateUrl: 'manila/listsadd.html',
-      controller: 'ListsController as ctrl'
+      controller: 'ListsController as ctrl'//,
       //resolve: {
-      //  ListItem: 'ListItem',
-      //  list_items: function(ListItem, $stateParams){
-       //   return ListItem.get({list_id: $stateParams.id}).$promise;
-        // }
-      //}
+      //  List: 'List',
+      //  list: function(List, $stateParams){
+      //    return List.get({id: $stateParams.id}).$promise;
+     //    }
+     // }
     })
     .state('login',{
       url: 'login',

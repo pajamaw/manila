@@ -1,5 +1,5 @@
 app.controller('MainController', MainController)
-function MainController(List, $location, $state){
+function MainController($scope, List, $location, $state){
   var ctrl = this;
 
   ctrl.updateLists = function(){
@@ -22,5 +22,10 @@ function MainController(List, $location, $state){
         //};
     });
   };
+
+  $scope.$on("update_parent_controller", function(event, message){
+    ctrl.updateLists();
+  });
+
   ctrl.updateLists();
 }
