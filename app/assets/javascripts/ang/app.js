@@ -5,21 +5,23 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('manila', {
       url: '/',
       templateUrl: 'manila.html',
-      controller: 'MainController as ctrl',
-        resolve: {
-        lists: function (List){
-          return List.query();
-        }
-      }
+      controller: 'MainController as ctrl'//,
+      //resolve: {
+        //lists: function (List){
+        //  return List.query();
+       // }
+     // }
     })
     .state('manila.listsadd', {
       url: '/lists/:id',
       templateUrl: 'manila/listsadd.html',
-      controller: 'ListsController as ctrl', 
-        resolve: {
-        list_items: function (ListItem){
-        }
-      }
+      controller: 'ListsController as ctrl'
+      //resolve: {
+      //  ListItem: 'ListItem',
+      //  list_items: function(ListItem, $stateParams){
+       //   return ListItem.get({list_id: $stateParams.id}).$promise;
+        // }
+      //}
     })
     .state('login',{
       url: 'login',

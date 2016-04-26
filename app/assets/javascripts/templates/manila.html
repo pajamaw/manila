@@ -2,7 +2,7 @@
       <h1>Manila</h1>
   </div>
   <div>
-    <table ng-repeat="list in ctrl.lists.lists track by $index" class="table table-bordered table-striped table-fixed-header">
+    <table ng-repeat="list in ctrl.lists.lists" class="table table-bordered table-striped table-fixed-header">
       <thead class="header">
         <tr>
           <th style="text-align: left"><a ui-sref="manila.listsadd({id: list.id})">{{ list.title }}</a> - by: {{ list.user.username }}</th>
@@ -15,22 +15,20 @@
           <th style="text-align: right">Completed?</th>
         </tr>
      </thead>
+    <tr ng-repeat="list_item in list.list_items" >
+      <td style="text-align: left">{{ list_item.title}}</td>
+      <td style="text-align: left">{{ list_item.location}}</td>
+      <td style="text-align: left">{{ list_item.description}}</td>
+      <td style="text-align: left">{{ list_item.date}}</td>
+      <td style="text-align: left">{{ list_item.completed}}</td>
+     </tr >
+        
 
-      <tbody>
-        <tr ng-repeat="list_item in list.list_items track by $index">
-          <td style="text-align: left">{{ list_item.title}}</td>
-          <td style="text-align: left">{{ list_item.location}}</td>
-          <td style="text-align: left">{{ list_item.description}}</td>
-          <td style="text-align: left">{{ list_item.date}}</td>
-          <td style="text-align: left">{{ list_item.completed}}</td>
-         </tr>
 
-      </tbody>
-    <ui-view></ui-view>
-
-    </table>
+    </table >
     </div>
-      <form ng-submit="ctrl.addList()"
+    <div ui-view></div>
+      <form ng-submit="ctrl.addList(ctrl.list)"
         style="margin-top:30px;" >
         <h3>Add a new list</h3>
 

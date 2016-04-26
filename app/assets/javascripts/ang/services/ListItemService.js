@@ -2,8 +2,9 @@ app.factory('ListItem', ListItem);
 
 function ListItem($resource){
   
-  var ListItem = $resource('/api/lists/:list_id/list_items.json', {list_id: '@list_id'}, {
-    update: {method: 'PUT'}
+  var ListItem = $resource('/api/lists/:list_id/list_items/:id', {list_id: '@list_id', id: '@id'}, {
+    update: {method: 'PUT'}, 
+    query: {method: 'GET'}
   });
   return ListItem;
 }

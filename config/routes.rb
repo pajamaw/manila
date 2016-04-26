@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   namespace :api, defaults: {format: :json} do
     resources :lists, only: [:index, :create, :update, :show] do
-      resources :list_items, only: [:index, :create, :update, :destroy]
+      resources :list_items, only: [:index, :show, :create, :update, :destroy]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

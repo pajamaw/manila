@@ -4,6 +4,10 @@
       render json: list.list_items
     end
 
+    def show
+      render json: list.list_items
+    end
+
     def create
       list_item = list.list_items.create(list_items_params)
       render json: list.list_items
