@@ -8,6 +8,9 @@ function MainController($scope, List, $location, $state){
     });
   };
 
+  $scope.changeTodo = function (i) {
+    $scope.currentShow = i;
+  };
   //ctrl.list = new List();
 
   ctrl.addList = function( newList){

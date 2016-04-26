@@ -11,19 +11,13 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
       ctrl.lists = data;
      // debugger;
     });
-    //ListItem.query({list_id: current_list_id}, function(data){
-      //debugger;
-    //});
+
   };
-
-  //ctrl.list_items = ListItem.query({list_id: $stateParams.id});
-  //ctrl.list_item = new ListItem();
-
-  //ctrl.list.list.list_items = ListItem.query({id: ctrl.list.id});
+//the whole time there were two issues. main controller wasn't saving the function, to do that i just had to explicitly list to update after the resource had saved
+//and with this controller it was a case where, it wasn't talking to its parent controller, and since the main view seen is in main, i had
+//to emit those changes up, through another function, and then make sure the parent controller updates its list. 
 
   ctrl.addListItem = function(newListItem){
-    //debugger;
-    //ctrl.list_item new ListItem();;
 
 
     //if(ctrl.list_item.location === '') {return;}
@@ -74,7 +68,7 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
     //ctrl.list.list.list_items.push(ctrl.list_item);
   };
   //ctrl.updateLists();
-  $scope.$emit(ctrl.updateListItems());
+  //$scope.$emit(ctrl.updateListItems());
 
   //debugger;
 }

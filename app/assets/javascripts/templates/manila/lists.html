@@ -1,0 +1,80 @@
+  <div class="page-header">
+      <h1>Manila</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3">
+    <div class="list-group">
+      <a ng-repeat="list in ctrl.lists.lists" ng-class="{'active' : currentShow === $index}" class="list-group-item" ng-click="changeTodo($index)">{{list.title}}<span class="badge">{{list.list_items.length}}</span></a>
+    </div>
+    </div>
+
+    <div class="col-xs-9">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3">
+      <form ng-submit="ctrl.addList(ctrl.list)"
+        >
+        <h3>Add a new list</h3>
+
+        <div class="form-group">
+          <input type="text"
+          ng-pristine
+          class="form-control"
+          placeholder="Title"
+          ng-model="ctrl.list.title"></input>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
+
+
+
+    <div class="row">
+      <div class="col-xs-6">
+      <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists track by $index" ng-show="$index === currentShow" ng-model="list.list_items">
+        <li class="list-group-item" ng-repeat="list_item in list.list_items">
+          <h4 class="list-group-item-heading">
+            {{list_item.title}}</h4>
+          <p class="list-group-item-text">
+            {{list_item.location}}</p>
+          <p class="list-group-item-text">
+            {{list_item.description}}</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+
+
+
+
+    <table ng-repeat="list in ctrl.lists.lists track by $index" class="table table-bordered table-striped table-fixed-header" ng-hide="true">
+      <thead class="header">
+        <tr>
+          <th style="text-align: left"><a ui-sref="lists.listsadd({id: list.id})">{{ list.title }}</a> - by: {{ list.user.username }}</th>
+        </tr>
+        <tr>
+          <th style="text-align: left">Title</th>
+          <th style="text-align: right">Location</th>
+          <th style="text-align: right">Description</th>
+          <th style="text-align: right">Date</th>
+          <th style="text-align: right">Completed?</th>
+        </tr>
+     </thead>
+    <tr ng-repeat="list_item in list.list_items track by $index" >
+      <td style="text-align: left">{{ list_item.title}}</td>
+      <td style="text-align: left">{{ list_item.location}}</td>
+      <td style="text-align: left">{{ list_item.description}}</td>
+      <td style="text-align: left">{{ list_item.date}}</td>
+      <td style="text-align: left">{{ list_item.completed}}</td>
+     </tr >
+        
+
+
+    </table >
+    </div>
+    <div class="col-xs-6" ui-view></div>
+      

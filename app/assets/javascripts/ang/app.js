@@ -2,9 +2,9 @@ var app = angular.module('app', ['ui.router', 'templates', 'ngResource', 'Devise
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('manila', {
-      url: '/',
-      templateUrl: 'manila.html',
+    .state('lists', {
+      url: '/lists',
+      templateUrl: 'manila/lists.html',
       controller: 'MainController as ctrl'//,
       //resolve: {
         //lists: function (List){
@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
        // }
      // }
     })
-    .state('manila.listsadd', {
+    .state('lists.listsadd', {
       url: '/lists/:id',
       templateUrl: 'manila/listsadd.html',
       controller: 'ListsController as ctrl'//,
