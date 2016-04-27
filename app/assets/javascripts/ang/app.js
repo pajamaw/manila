@@ -2,6 +2,17 @@ var app = angular.module('app', ['ui.router', 'templates', 'ngResource', 'Devise
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+    .state('manilla', {
+      url: '/',
+      templateUrl: 'front_page.html',
+      controller: 'ManillaController'//,
+      //resolve: {
+        //lists: function (List){
+        //  return List.query();
+       // }
+     // }
+    })
+    $stateProvider
     .state('lists', {
       url: '/lists',
       templateUrl: 'manila/lists.html',
@@ -13,7 +24,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
      // }
     })
     .state('lists.listsadd', {
-      url: '/lists/:id',
+      url: '/:id',
       templateUrl: 'manila/listsadd.html',
       controller: 'ListsController as ctrl'//,
       //resolve: {
@@ -24,22 +35,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
      // }
     })
     .state('login',{
-      url: 'login',
+      url: '/login',
       templateUrl: 'auth/_login.html',
       controller: 'AuthController',
       onEnter: ['$state', 'Auth', function($state, Auth){
         Auth.currentUser().then(function(){
-          $state.go('/');
+          $state.go('/lists');
         })
       }]
     })
     .state('register',{
-      url: 'register',
+      url: '/register',
       templateUrl: 'auth/_register.html',
       controller: 'AuthController',
       onEnter: ['$state', 'Auth', function($state, Auth){
         Auth.currentUser().then(function(){
-          $state.go('/');
+          $state.go('/lists');
         })
       }]
     });

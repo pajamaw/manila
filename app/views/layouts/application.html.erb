@@ -12,8 +12,10 @@
   <%= csrf_meta_tags %>
 
 </head>
+ <div class="col-md-3 col-md-offset-1">
+      <div ng-include src="'nav/nav.html'"></div>
+  </div>
 <body ng-app="app">
-
       <%=yield%>
 </body>
 </html>

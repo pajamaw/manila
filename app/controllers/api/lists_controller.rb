@@ -1,5 +1,6 @@
 module Api
     class ListsController <ApplicationController
+      before_filter :authenticate_user!, only: [:create]
     def index
       @lists = List.all
       render json: @lists
@@ -11,6 +12,7 @@ module Api
 
     def create 
       list = List.new(list_params)
+      list.user_id = current_user.id
       if list.save
         respond_to do |format|
           format.json {render json: list}

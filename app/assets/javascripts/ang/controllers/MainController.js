@@ -1,6 +1,12 @@
 app.controller('MainController', MainController)
-function MainController($scope, List, $location, $state){
+function MainController($scope, List, $location, $state, Auth){
   var ctrl = this;
+
+
+  Auth.currentUser()
+    .then(function(user) {
+      ctrl.user = user;
+    });
 
   ctrl.updateLists = function(){
     List.query( function (data){

@@ -1,5 +1,6 @@
   class Api::ListItemsController < ApplicationController
-
+    before_filter :authenticate_user!, only: [:create]
+  
     def index
       render json: list.list_items
     end
@@ -9,8 +10,11 @@
     end
 
     def create
-      list_item = list.list_items.create(list_items_params)
-      render json: list.list_items
+      list_item = list.list_items.new(list_items_params)
+      list_item.user_id = current_user.id
+      if list_item.save
+        render json: list.list_items
+      end
     end
 
     def update 

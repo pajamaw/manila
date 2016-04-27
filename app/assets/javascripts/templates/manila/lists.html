@@ -1,21 +1,14 @@
   <div class="page-header">
-      <h1>Manila</h1>
+      <h1 ui-sref="lists">Manila</h1>
   </div>
 
   <div class="row">
     <div class="col-xs-3">
     <div class="list-group">
-      <a ng-repeat="list in ctrl.lists.lists" ng-class="{'active' : currentShow === $index}" class="list-group-item" ng-click="changeTodo($index)">{{list.title}}<span class="badge">{{list.list_items.length}}</span></a>
+      <a ui-sref="lists.listsadd({id: list.id})" ng-repeat="list in ctrl.lists.lists" ng-class="{'active' : currentShow === $index}" class="list-group-item" ng-click="changeTodo($index)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
     </div>
-    </div>
-
-    <div class="col-xs-9">
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-3">
-      <form ng-submit="ctrl.addList(ctrl.list)"
+    
+    <form ng-submit="ctrl.addList(ctrl.list)"
         >
         <h3>Add a new list</h3>
 
@@ -28,11 +21,13 @@
         <button type="submit" class="btn btn-primary">Create</button>
       </form>
     </div>
+
   </div>
 
 
 
     <div class="row">
+
       <div class="col-xs-6">
       <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists track by $index" ng-show="$index === currentShow" ng-model="list.list_items">
         <li class="list-group-item" ng-repeat="list_item in list.list_items">
@@ -42,8 +37,12 @@
             {{list_item.location}}</p>
           <p class="list-group-item-text">
             {{list_item.description}}</p>
-        </li>
+    
+        </li>      
+        <div ng-if="list.user.id === ctrl.user.user.id" ui-view></div>
+
       </ol>
+
     </div>
   </div>
 
@@ -75,6 +74,3 @@
 
 
     </table >
-    </div>
-    <div class="col-xs-6" ui-view></div>
-      

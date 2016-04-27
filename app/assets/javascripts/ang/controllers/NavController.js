@@ -1,3 +1,5 @@
+app.controller('NavController', NavController)
+
 function NavController($scope, Auth){
   $scope.signedIn = Auth.isAuthenticated;
   $scope.logout = Auth.logout;
@@ -19,6 +21,4 @@ function NavController($scope, Auth){
   });
 }
 
-angular
-  .module('app')
-  .controller('NavController', NavController)
+
