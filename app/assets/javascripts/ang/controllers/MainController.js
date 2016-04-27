@@ -2,10 +2,6 @@ app.controller('MainController', MainController)
 function MainController($scope, $rootScope, List, ListItem, $location, $state, Auth, uiGmapGoogleMapApi){
   var ctrl = this;
 
-  //var areaLat      = 44.2126995
-   //   areaLng      = -100.2471641,
-     // areaZoom     = 3;
-
   Auth.currentUser()
     .then(function(user) {
       ctrl.user = user;
