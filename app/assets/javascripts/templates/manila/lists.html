@@ -3,14 +3,23 @@
 
   </div>
 
-          <div class="input-group">
+    <div class="input-group">
     <span class="input-group-btn">
     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
     </span>
     <input type="search" class="form-control" placeholder="Search by username, list title, item title, description or location" ng-model="search">
     </div>
 
+
+    <!--<ul class="nav nav-pills">
+    <li ng-model="search.list.user_id" ng-click="search.list.user_id == '{{ctrl.user.user.id}}'"><a href="#/lists">My Lists</a></li>
+    <li ng-model="" ng-click="show='Incomplete'"><a href="#/lists">All Lists</a></li>
+    </ul>-->
+
+
   <div class="row">
+
+
     <div class="col-xs-4">
     <div class="list-group">
       <a ui-sref="lists.listsadd({id: list.id})" ng-repeat="list in ctrl.lists.lists | filter :search" ng-class="{'active' : currentShow === $index}" class="list-group-item" ng-click="changeTodo($index)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
@@ -27,14 +36,11 @@
           placeholder="Title"
           ng-model="ctrl.list.title"></input>
         <button type="submit" class="btn btn-primary">Create</button>
+      </div>
       </form>
     </div>
 
-  </div>
 
-
-
-    <div class="row">
 
       <div class="col-xs-4">
       <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists track by $index" ng-show="$index === currentShow" ng-model="list.list_items">
@@ -53,33 +59,14 @@
       </ol>
 
     </div>
+ 
+    <div class="col-xs-4">
+          <div > 
+      <div id="map_canvas">
+        <ui-gmap-google-map center="map.center" options="options" zoom="map.zoom"></ui-gmap-google-map>
+      </div>
+    </div>
   </div>
+</div>
 
 
-
-
-
-    <table ng-repeat="list in ctrl.lists.lists track by $index" class="table table-bordered table-striped table-fixed-header" ng-hide="true">
-      <thead class="header">
-        <tr>
-          <th style="text-align: left"><a ui-sref="lists.listsadd({id: list.id})">{{ list.title }}</a> - by: {{ list.user.username }}</th>
-        </tr>
-        <tr>
-          <th style="text-align: left">Title</th>
-          <th style="text-align: right">Location</th>
-          <th style="text-align: right">Description</th>
-          <th style="text-align: right">Date</th>
-          <th style="text-align: right">Completed?</th>
-        </tr>
-     </thead>
-    <tr ng-repeat="list_item in list.list_items track by $index" >
-      <td style="text-align: left">{{ list_item.title}}</td>
-      <td style="text-align: left">{{ list_item.location}}</td>
-      <td style="text-align: left">{{ list_item.description}}</td>
-      <td style="text-align: left">{{ list_item.date}}</td>
-      <td style="text-align: left">{{ list_item.completed}}</td>
-     </tr >
-        
-
-
-    </table >

@@ -1,7 +1,16 @@
 app.controller('MainController', MainController)
-function MainController($scope, List, $location, $state, Auth){
+function MainController($scope, List, $location, $state, Auth, uiGmapGoogleMapApi){
   var ctrl = this;
 
+  //var areaLat      = 44.2126995
+   //   areaLng      = -100.2471641,
+     // areaZoom     = 3;
+
+  uiGmapGoogleMapApi.then(function(maps) {
+    $scope.map     = { center: { latitude: 44, longitude: 100 }, zoom: 3 };
+    $scope.options = { scrollwheel: false };
+    //debugger;
+  });
 
   Auth.currentUser()
     .then(function(user) {
