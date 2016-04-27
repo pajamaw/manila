@@ -63,7 +63,9 @@
           <div > 
       <div id="map_canvas">
 
-        <ui-gmap-google-map ng-if="!(currentShow.user.id === ctrl.user.user.id)"center="map.center" options="map.options" zoom="map.zoom"> 
+        <ui-gmap-google-map ng-if="!(currentShow.user.id === ctrl.user.user.id)"center="map.center" options="map.options" zoom="map.zoom" tempevents="map.tempevents"> 
+          <ui-gmap-marker ng-repeat="m in currentShow.list_items" coords="{latitude: m.latitude, longitude: m.longitude}" icon="m.icon" idkey="m.gmapkey">
+          </ui-gmap-marker>
         </ui-gmap-google-map>
 
         <ui-gmap-google-map ng-if="currentShow.user.id === ctrl.user.user.id" center="map.center" options="map.options" zoom="map.zoom"events="map.events"> 
