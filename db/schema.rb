@@ -1,4 +1,4 @@
-a.# encoding: UTF-8
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,19 +11,10 @@ a.# encoding: UTF-8
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427000039) do
+ActiveRecord::Schema.define(version: 20160427211801) do
 
-  create_table "list_items", force: :cascade do |t|
-    t.string   "title"
-    t.string   "location"
-    t.string   "date"
-    t.string   "description"
-    t.boolean  "completed",   default: false
-    t.integer  "list_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "user_id"
-  end
+# Could not dump table "list_items" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "lists", force: :cascade do |t|
     t.string   "title"

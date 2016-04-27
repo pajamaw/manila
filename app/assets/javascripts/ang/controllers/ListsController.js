@@ -6,6 +6,17 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
   //ctrl.list_items = 
   current_list_id = $stateParams.id;
 
+  $scope.$on('keydata', function(event, key){
+    key_data = key;
+  });
+  $scope.$on('latdata', function(event, lat){
+    lat_data = lat;
+  });
+
+  $scope.$on('londata', function(event, lon){
+    lon_data = lon;
+  });
+
   ctrl.updateListItems = function (){
     List.query(function (data){
       ctrl.lists = data;
@@ -24,6 +35,12 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
     newListItem.list_id = current_list_id;
     //ctrl.list_item.$save(function(data){
       //debugger;
+    newListItem.gmapkey = key_data;
+    newListItem.latitude = lat_data;
+    newListItem.longitude = lon_data;
+    console.log(newListItem.gmapkey, newListItem.latitude, newListItem.longitude);
+
+
     ListItem.save(newListItem, function(){
      // debugger;
                        // debugger;

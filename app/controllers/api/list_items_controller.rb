@@ -1,6 +1,6 @@
   class Api::ListItemsController < ApplicationController
     before_filter :authenticate_user!, only: [:create]
-  
+
     def index
       render json: list.list_items
     end
@@ -38,6 +38,6 @@
     end
 
     def list_items_params
-      params.require(:list_item).permit(:title, :location, :date, :description, :completed, :list_id)
+      params.require(:list_item).permit(:title, :latitude, :longitude, :gmapkey, :date, :description, :completed, :list_id)
     end
   end

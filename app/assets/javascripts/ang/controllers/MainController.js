@@ -1,10 +1,15 @@
 app.controller('MainController', MainController)
-function MainController($scope, List, $location, $state, Auth, uiGmapGoogleMapApi){
+function MainController($scope, $rootScope, List, ListItem, $location, $state, Auth, uiGmapGoogleMapApi){
   var ctrl = this;
 
   //var areaLat      = 44.2126995
    //   areaLng      = -100.2471641,
      // areaZoom     = 3;
+
+  Auth.currentUser()
+    .then(function(user) {
+      ctrl.user = user;
+    });
 
   uiGmapGoogleMapApi.then(function(maps) {
     $scope.map     = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12,
@@ -22,22 +27,27 @@ function MainController($scope, List, $location, $state, Auth, uiGmapGoogleMapAp
           }
         };
         $scope.map.markers.push(marker);
-        console.log('"lat:' + marker.coords.latitude + ', lon:' + marker.coords.longitude + '"');
+        var tag = ('"' + marker.key + ',' + marker.coords.latitude + ',' + marker.coords.longitude + '"');
+        console.log(tag);
+        var key = marker.id;
+        var lat = marker.coords.latitude;
+        var lon = marker.coords.longitude;
+        console.log(key, lat, lon);
+        //document.css("#location-input").text(tag.latitude);
+        //$scope.list.list_item.location = tag.latitude;
+        $rootScope.$broadcast('keydata', key);
+        $rootScope.$broadcast('latdata', lat);
+        $rootScope.$broadcast('londata', lon);
+
         $scope.$apply();
       }
     },
-
     options: { scrollwheel: false }
     //debugger;
     //$scope.getpos = function(event) {
     //alert(event.latLng);
     };
   });
-
-  Auth.currentUser()
-    .then(function(user) {
-      ctrl.user = user;
-    });
 
   ctrl.updateLists = function(){
     List.query( function (data){
