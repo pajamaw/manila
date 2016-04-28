@@ -46,13 +46,12 @@
       <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists" ng-show="list === currentShow" ng-model="list.list_items">
         <h3>{{list.title}}</h3>
         <li class="list-group-item" ng-repeat="list_item in list.list_items | filter :search">
-          <h4 class="list-group-item-heading">
-            {{list_item.title}}</h4>
+          <h4 editable-text="list_item.title" class="list-group-item-heading" onaftersave="ctrl.editListItemTitle(list_item)">{{list_item.title}}</h4>
           <p class="list-group-item-text">
             {{list_item.location}}</p>
           <p class="list-group-item-text">
             {{list_item.description}}</p>
-    
+          <button ng-click"removeListItem($index)">X</button>
         </li>      
         <div ng-if="currentShow.user.id === ctrl.user.user.id" ui-view></div>
 

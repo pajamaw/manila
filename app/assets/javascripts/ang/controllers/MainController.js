@@ -6,7 +6,11 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
     .then(function(user) {
       ctrl.user = user;
     });
-
+  
+  ctrl.editListItemTitle = function (list_item){
+    ListItem.update({list_id: list_item.list_id, id: list_item.id, title: list_item.title});
+    //debugger;
+  };
   uiGmapGoogleMapApi.then(function(maps) {
     $scope.map     = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12,
       tempevents: { "click" : 
