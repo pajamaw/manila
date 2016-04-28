@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'application#index'
   devise_for :users
   namespace :api, defaults: {format: :json} do
-    resources :lists, only: [:index, :create, :update, :show] do
+    resources :lists, only: [:index, :create, :update, :show, :destroy] do
       resources :list_items, only: [:index, :show, :create, :update, :destroy]
     end
   end

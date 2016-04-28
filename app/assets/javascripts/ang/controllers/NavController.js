@@ -19,6 +19,10 @@ function NavController($scope, Auth){
   $scope.$on('devise:logout', function(e, user){
     $scope.user = {};
   });
+
+  $scope.$on('devise:destroy-registration', function(e, user){
+    $scope.user = {};
+  });
 }
 
 

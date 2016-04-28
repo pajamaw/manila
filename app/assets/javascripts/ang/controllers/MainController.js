@@ -1,16 +1,12 @@
 app.controller('MainController', MainController)
-function MainController($scope, $rootScope, List, ListItem, $location, $state, Auth, uiGmapGoogleMapApi){
+function MainController($scope, $rootScope, List, ListItem, $location, $state, Auth, uiGmapGoogleMapApi, $filter){
   var ctrl = this;
 
   Auth.currentUser()
     .then(function(user) {
       ctrl.user = user;
     });
-  
-  ctrl.editListItemTitle = function (list_item){
-    ListItem.update({list_id: list_item.list_id, id: list_item.id, title: list_item.title});
-    //debugger;
-  };
+
   uiGmapGoogleMapApi.then(function(maps) {
     $scope.map     = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12,
       tempevents: { "click" : 
@@ -64,6 +60,38 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
     };
   });
 
+  ctrl.editListItemTitle = function (list_item){
+    ListItem.update({list_id: list_item.list_id, id: list_item.id, title: list_item.title});
+    //debugger;
+  };
+
+  ctrl.editListItemDate = function (list_item){
+    ListItem.update({list_id: list_item.list_id, id: list_item.id, date: list_item.date});
+    //debugger;
+  };
+
+  ctrl.editListItemDescription = function (list_item){
+    ListItem.update({list_id: list_item.list_id, id: list_item.id, description: list_item.description});
+    //debugger;
+  };
+
+  ctrl.editListTitle = function (list){
+    List.update({id: list.id, title: list.title});
+    //debugger;
+  };
+
+  ctrl.removeListItem = function (index, list_item, list){
+
+    list.list_items.splice(index, 1);
+    ListItem.delete({list_id: list_item.list_id, id: list_item.id});
+  };
+
+  ctrl.removeList = function (index, list){
+
+    ctrl.lists.lists.splice(index, 1);
+    List.delete({id: list.id});
+  };
+
   ctrl.updateLists = function(){
     List.query( function (data){
       ctrl.lists = data;
@@ -76,6 +104,17 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
     $scope.currentShow = i;
   };
   //ctrl.list = new List();
+
+  $scope.completed = [
+    {value: true, text: 'Completed!'},
+    {value: false, text: 'Get to it!'}
+  ]; 
+
+  $scope.showStatus = function(list_item) {
+    var selected = $filter('filter')($scope.completed, {value: list_item.completed});
+    return (list_item.completed && selected.length) ? selected[0].text : 'Not set';
+  };
+
 
   ctrl.addList = function( newList){
     List.save(newList, function(){

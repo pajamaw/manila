@@ -5,7 +5,8 @@ function List($resource){
 
   var List = $resource('/api/lists/:id', {id: '@id'}, {
     query: {method: 'GET'},
-    update: {method: 'PUT'}
+    update: {method: 'PUT'},
+    delete: {method: 'DELETE'}
   });
   return List;
 }

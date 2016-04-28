@@ -25,12 +25,7 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
 
   };
 
-  ctrl.editListItemTitle = function (){
-    ListItem.update();
-    debugger;
-    $scope.$emit('update_parent_controller', ctrl.updateListItems());
 
-  };
 //the whole time there were two issues. main controller wasn't saving the function, to do that i just had to explicitly list to update after the resource had saved
 //and with this controller it was a case where, it wasn't talking to its parent controller, and since the main view seen is in main, i had
 //to emit those changes up, through another function, and then make sure the parent controller updates its list. 
@@ -81,7 +76,6 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
                             //debugger;
           //ctrl.list_items.unshift(data.list_items);
 
-          //$state.go($state.current, {}, {reload: false});
                    //    debugger;
                  // debugger;
     });

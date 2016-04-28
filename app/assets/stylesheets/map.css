@@ -2,18 +2,17 @@
   height: 600px;
 }
 
-.edit-in-place span {
-  cursor: pointer;
+.editable-click {
+  color: black;
+  border-bottom: none;
 }
 
-.edit-in-place input {
-  display: none;
+.editable-click:hover  {
+  text-color:grey;
+  border-bottom: none;
 }
 
-.edit-in-place.active span {
-  display: none;
-}
-
-.edit-in-place.active input {
-  display: inline-block;
+button.remove {
+  float: ;
+  margin: 10px, 10px, 100px, 10px;
 }

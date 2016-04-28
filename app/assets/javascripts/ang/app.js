@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ui.router', 'templates', 'ngResource', 'Devise', 'uiGmapgoogle-maps', 'nemLogging', 'xeditable']);
 app.run(function(editableOptions){
-  editableOptions.theme = 'bs3';
+  editableOptions.theme = 'default';
 });
 app.config(function(uiGmapGoogleMapApiProvider){
   uiGmapGoogleMapApiProvider.configure({
@@ -17,14 +17,24 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('manilla', {
       url: '/',
       templateUrl: 'front_page.html',
-      controller: 'ManillaController'//,
+      controller: 'MainController as ctrl'//,
       //resolve: {
         //lists: function (List){
         //  return List.query();
        // }
      // }
     })
-    $stateProvider
+    .state('manilla.listsadd', {
+      url: '/:id',
+      templateUrl: 'manila/listsadd.html',
+      controller: 'ListsController as ctrl'//,
+      //resolve: {
+      //  List: 'List',
+      //  list: function(List, $stateParams){
+      //    return List.get({id: $stateParams.id}).$promise;
+     //    }
+     // }
+    })
     .state('lists', {
       url: '/lists',
       templateUrl: 'manila/lists.html',

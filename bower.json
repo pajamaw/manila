@@ -7,7 +7,8 @@
     "bootstrap": "3.3.6",
     "angular-resource": "v1.5.3",
     "angular-simple-logger": "^0.1.7",
-    "angular-xeditable": "^0.1.12"
+    "angular-xeditable": "^0.1.12",
+    "ng-confirm": "angular-confirm#^1.1.0"
   },
   "vendor": {
     "name": "bower-rails generated vendor assets",

@@ -1,13 +1,14 @@
-app.controller('ManillaController', ManillaController);
+app.controller('ManillaController', ManillaController)
 
-function ManillaController($scope, Auth, $location) {
+function ManillaController($scope, Auth, $location, List, ListItem) {
 
-  $scope.signedIn = Auth.isAuthenticated;
+  //$scope.signedIn = Auth.isAuthenticated;
 
   var ctrl = this;
 
-  ctrl.show = function() {
-    return true;
-  };
 
-}
+  Auth.currentUser()
+    .then(function(user) {
+      ctrl.user = user;
+    });
+};
