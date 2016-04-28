@@ -53,7 +53,7 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
 
       }
     },
-    options: { scrollwheel: false }
+    options: { scrollwheel: true }
     //debugger;
     //$scope.getpos = function(event) {
     //alert(event.latLng);
@@ -72,6 +72,10 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
 
   ctrl.editListItemDescription = function (list_item){
     ListItem.update({list_id: list_item.list_id, id: list_item.id, description: list_item.description});
+    //debugger;
+  };
+  ctrl.editListItemStatus = function (list_item){
+    ListItem.update({list_id: list_item.list_id, id: list_item.id, completed: list_item.completed});
     //debugger;
   };
 
@@ -106,13 +110,13 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
   //ctrl.list = new List();
 
   $scope.completed = [
-    {value: true, text: 'Completed!'},
-    {value: false, text: 'Get to it!'}
+    {value: 1, text: 'Completed!'},
+    {value: 0, text: 'Get to it!'}
   ]; 
 
   $scope.showStatus = function(list_item) {
     var selected = $filter('filter')($scope.completed, {value: list_item.completed});
-    return (list_item.completed && selected.length) ? selected[0].text : 'Not set';
+    return (list_item.completed ) ? 'Completed!' : 'Get to it!';
   };
 
 
@@ -128,6 +132,7 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
         //};
     });
   };
+
 
   $scope.$on("update_parent_controller", function(event, message){
     ctrl.updateLists();

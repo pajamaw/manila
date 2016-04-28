@@ -11,4 +11,6 @@ function ManillaController($scope, Auth, $location, List, ListItem) {
     .then(function(user) {
       ctrl.user = user;
     });
+
+    
 };

@@ -45,7 +45,7 @@
       <div class="col-xs-4">
       <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists" ng-show="list === currentShow" ng-model="list.list_items">
         
-        <h3 ng-if="(currentShow.user.id === ctrl.user.user.id)" editable-text="list.title" onaftersave="ctrl.editListTitle(list)">{{list.title}}                                                                                                                                                              <button type="button" class="remove" ng-if="(currentShow.user.id === ctrl.user.user.id)" ng-click="ctrl.removeList($index, list)">X</button></h3>
+        <h3 ng-if="(currentShow.user.id === ctrl.user.user.id)" editable-text="list.title" onaftersave="ctrl.editListTitle(list)">{{list.title}}</h3>                                                                                                                                                            <button type="button" class="remove" ng-if="(currentShow.user.id === ctrl.user.user.id)" ng-click="ctrl.removeList($index, list)">X</button></h3>
         </li>
 
 
@@ -66,7 +66,7 @@
           <p ng-if="!(currentShow.user.id === ctrl.user.user.id)"class="list-group-item-text">{{list_item.date}}</p>
 
 
-          <p ng-if="(currentShow.user.id === ctrl.user.user.id)" ng-if="(currentShow.user.id === ctrl.user.user.id)" editable-text="list_item.description" onaftersave="ctrl.editListItemDescription(list_item)" class="list-group-item-text">
+          <p ng-if="(currentShow.user.id === ctrl.user.user.id)"  editable-text="list_item.description" onaftersave="ctrl.editListItemDescription(list_item)" class="list-group-item-text">
             {{list_item.description}}</p>
 
           <p ng-if="!(currentShow.user.id === ctrl.user.user.id)"class="list-group-item-text">{{list_item.description}}</p>
@@ -76,18 +76,13 @@
 
           <button type="button" class="remove" ng-if="(currentShow.user.id === ctrl.user.user.id)" ng-click="ctrl.removeListItem($index, list_item, list)">X</button>
 
-          <input type="checkbox" class="style1"/>
-          <script>
-          $('input[type="checkbox"].style1').checkbox({
-          buttonStyleChecked: 'btn-success',
-          checkedClass: 'icon-check',
-          uncheckedClass: 'icon-check-empty'
-          });
-          </script>
-          <a editable-radiolist="list_item.completed" e-ng-options="s.value as s.text for s in completed">{{ctrl.showStatus(list_item)}}</a>
+          
+          <a  ng-if="(currentShow.user.id === ctrl.user.user.id)" type="submit" editable-radiolist="list_item.completed" e-ng-options="s.value as s.text for s in completed" onaftersave="ctrl.editListItemStatus(list_item)">{{showStatus(list_item)}}</a>
+
+          <a ng-if="!(currentShow.user.id === ctrl.user.user.id)">{{showStatus(list_item)}}</a>
         </li>
         
-
+          <!--<a editable-checkbox="list_item.completed" e-title="Completed?" onaftersave="ctrl.editListItemStatus(list_item)">{{ctrl.showStatus(list_item)}}</a>-->
         <!--<button ng-if="currentShow.user.id === ctrl.user.user.id" id="show-addform" value="Add" ng-click="addform=!addform" />-->
         <div ng-if="currentShow.user.id === ctrl.user.user.id" ui-view></ui-view>
       </ol>
