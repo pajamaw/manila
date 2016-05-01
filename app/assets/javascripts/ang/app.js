@@ -11,7 +11,7 @@ app.config(function(uiGmapGoogleMapApiProvider){
   });
 });
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider ) {
   
   $stateProvider
     .state('manilla', {

@@ -8,22 +8,7 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
     });
 
   uiGmapGoogleMapApi.then(function(maps) {
-    $scope.map     = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12,
-      tempevents: { "click" : 
-      function (map, eventname, originalEventArgs) { 
-        //alert(maps.latLng)
-        var e = originalEventArgs[0];
-        var tlat = e.latLng.lat(),tlon = e.latLng.lng();
-        var tmarker = {
-          id: Date.now(),
-          coords:{
-            latitude: lat,
-            longitude: tlon
-          }
-        };
-        alert(tmarker);
-      }
-    },
+    $scope.map     = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12
     events: { "click" : 
       function (map, eventname, originalEventArgs) { 
         //alert(maps.latLng)
