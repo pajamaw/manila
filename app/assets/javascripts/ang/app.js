@@ -17,44 +17,22 @@ app.config(function($stateProvider, $urlRouterProvider ) {
     .state('manilla', {
       url: '/',
       templateUrl: 'front_page.html',
-      controller: 'MainController as ctrl'//,
-      //resolve: {
-        //lists: function (List){
-        //  return List.query();
-       // }
-     // }
+      controller: 'MainController as ctrl'
     })
     .state('manilla.listsadd', {
       url: '/:id',
       templateUrl: 'manila/listsadd.html',
-      controller: 'ListsController as ctrl'//,
-      //resolve: {
-      //  List: 'List',
-      //  list: function(List, $stateParams){
-      //    return List.get({id: $stateParams.id}).$promise;
-     //    }
-     // }
+      controller: 'ListsController as ctrl'
     })
     .state('lists', {
       url: '/lists',
       templateUrl: 'manila/lists.html',
-      controller: 'MainController as ctrl'//,
-      //resolve: {
-        //lists: function (List){
-        //  return List.query();
-       // }
-     // }
+      controller: 'MainController as ctrl'
     })
     .state('lists.listsadd', {
       url: '/:id',
       templateUrl: 'manila/listsadd.html',
-      controller: 'ListsController as ctrl'//,
-      //resolve: {
-      //  List: 'List',
-      //  list: function(List, $stateParams){
-      //    return List.get({id: $stateParams.id}).$promise;
-     //    }
-     // }
+      controller: 'ListsController as ctrl'
     })
     .state('login',{
       url: '/login',
