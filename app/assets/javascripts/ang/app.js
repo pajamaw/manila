@@ -29,11 +29,11 @@ app.config(function($stateProvider, $urlRouterProvider ) {
       templateUrl: 'manila/lists.html',
       controller: 'MainController as ctrl'
     })
-    .state('lists.listsadd', {
-      url: '/:id',
-      templateUrl: 'manila/listsadd.html',
-      controller: 'ListsController as ctrl'
-    })
+    //.state('lists.listsadd', {
+  //    url: '/:id',
+   //   templateUrl: 'manila/listsadd.html',
+  //    controller: 'ListsController as ctrl'
+  //  })
     .state('login',{
       url: '/login',
       templateUrl: 'auth/_login.html',
