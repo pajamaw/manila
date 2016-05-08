@@ -1,12 +1,12 @@
 
   <form ng-submit="ctrl.addListItem(ctrl.list_item)"
     style="margin-top:30px;">
-    <h4>Where would you like to go?</h4>
+    <h4>Add another item</h4>
     <div class="form-group">
+      <label>What are you calling it?</label>
       <input type="text"
       class="form-control"
-      placeholder="What are you calling this adventure?"
-      ng-model="ctrl.list_item.title"></input>
+      ng-model="ctrl.list_item.title" required></input>
     </div>
     <!--<div class="form-group">
       <input type="text"
@@ -16,17 +16,21 @@
       ng-model="ctrl.list_item.location"></input>
     </div>-->
     <div class="form-group">
-      <input type="text"
+      <label>When are you doing this by?</label>
+      <input type="date"
       class="form-control"
-      placeholder="When you doing it by?"
-      ng-model="ctrl.list_item.date"></input>
+      placeholder="mi"
+      ng-model="ctrl.list_item.date"
+       [min="2015-08-01"]
+        required></input>
     </div>
     <h5>Click on the map to set your location!</h5>
     <div class="form-group">
+      <label>What's the plan?</label>
       <input type="text"
       class="form-control"
-      placeholder="What's the plan?"
-      ng-model="ctrl.list_item.description"></input>
+      ng-model="ctrl.list_item.description"
+       required></input>
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
   </form>

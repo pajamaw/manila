@@ -3,7 +3,7 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
   var ctrl = this;
 
   ctrl.list = List.get({id: $stateParams.id});
-  //ctrl.list_items = 
+
   current_list_id = $stateParams.id;
 
   $scope.$on('keydata', function(event, key){
@@ -80,15 +80,7 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
                  // debugger;
     });
 
-      //new_item = data.list_items[data.list_items.length -1]
-      //ctrl.list = List.get({id: $stateParams.id});
-      //new_item = new ListItem();
-      //ctrl.list_items = ListItem.query({list_id: new_item.list_id});
-      //return ctrl.list_items.push(new_item);
-      //$state.go($state.current,{}, {reload: false});
-    //});
-    //ctrl.list.list.list_items.push(ctrl.list_item);
-    //ctrl.list.list.list_items.push(ctrl.list_item);
+
   };
   //ctrl.updateLists();
   //$scope.$emit(ctrl.updateListItems());

@@ -58,13 +58,13 @@
         
 
           <p ng-if="(currentShow.user.id === ctrl.user.user.id)" editable-text="list_item.date" onaftersave="ctrl.editListItemDate(list_item)" class="list-group-item-text">
-            {{list_item.date}}</p>
+            Finishing Before: {{list_item.date | date: mm-DD-yyyy}}</p>
 
 
 
 
           <p ng-if="(currentShow.user.id === ctrl.user.user.id)"  editable-text="list_item.description" onaftersave="ctrl.editListItemDescription(list_item)" class="list-group-item-text">
-            {{list_item.description}}</p>
+            Description: {{list_item.description}}</p>
 
 
 
