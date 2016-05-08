@@ -13,9 +13,6 @@
     <input type="search" class="form-control" placeholder="Search by username, list title, item title, description or location" ng-model="search">
     </div>
 
-
-
-
   <div class="row">
 
     <div class="col-xs-4">
@@ -24,24 +21,29 @@
     
     </div>
 
-    
-    <form ng-submit="ctrl.addList(ctrl.list)"
-        >
-        <h3>Add a new list</h3>
+    <button ng-show="!showListForm" class="btn btn-primary btn-sm" ng-click="showListForm = !showListForm">Add New List</button>
 
-        <div class="form-group">
-          <input type="text"
-          ng-pristine
-          class="form-control"
-          placeholder="Title"
-          ng-model="ctrl.list.title" required></input>
-          <div role="alert">
-            <span class="error" ng-show="input.$error.required">
-         Required!</span>
+    <button ng-show="showListForm" class="btn btn-primary btn-sm" ng-click="showListForm = !showListForm">Hide</button>
+    <div ng-show="showListForm" id="ListForm">
+
+      <form ng-submit="ctrl.addList(ctrl.list)"
+          >
+          <h3>Add a new list</h3>
+
+          <div class="form-group">
+            <input type="text"
+            ng-pristine
+            class="form-control"
+            placeholder="Title"
+            ng-model="ctrl.list.title" required></input>
+            <div role="alert">
+              <span class="error" ng-show="input.$error.required">
+           Required!</span>
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        </form>
       </div>
-      </form>
     </div>
 
 
