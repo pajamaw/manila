@@ -14,33 +14,33 @@ app.config(function(uiGmapGoogleMapApiProvider){
 app.config(function($stateProvider, $urlRouterProvider ) {
   
   $stateProvider
-    .state('manilla', {
+    .state('manila', {
       url: '/',
       templateUrl: 'front_page.html',
       controller: 'MainController as ctrl'
     })
-    .state('manilla.listsadd', {
-      url: '/:id',
-      templateUrl: 'manila/listsadd.html',
-      controller: 'ListsController as ctrl'
-    })
-    .state('lists', {
+    .state('manila.lists', {
       url: '/lists',
       templateUrl: 'manila/lists.html',
       controller: 'MainController as ctrl'
     })
-    //.state('lists.listsadd', {
-  //    url: '/:id',
-   //   templateUrl: 'manila/listsadd.html',
-  //    controller: 'ListsController as ctrl'
-  //  })
+    .state('manila.user', {
+      url: '/lists',
+      templateUrl: 'manila/user_lists.html',
+      controller: 'MainController as ctrl'
+    })
+    .state('manila.user.listsadd', {
+      url: '/:id',
+      templateUrl: 'manila/listsadd.html',
+      controller: 'ListsController as ctrl'
+    })
     .state('login',{
       url: '/login',
       templateUrl: 'auth/_login.html',
       controller: 'AuthController',
       onEnter: ['$state', 'Auth', function($state, Auth){
         Auth.currentUser().then(function(){
-          $state.go('manilla');
+          $state.go('manila.user');
         })
       }]
     })
@@ -50,9 +50,9 @@ app.config(function($stateProvider, $urlRouterProvider ) {
       controller: 'AuthController',
       onEnter: ['$state', 'Auth', function($state, Auth){
         Auth.currentUser().then(function(){
-          $state.go('manilla');
+          $state.go('manila.user');
         })
       }]
     });
-  $urlRouterProvider.otherwise('/lists');
+  $urlRouterProvider.otherwise('/');
 });

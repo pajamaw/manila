@@ -2,11 +2,11 @@
   <div ng-controller="NavController">
 
       <ul class="nav navbar-nav">
-        <li><a ui-sref="lists">Home</a></li>
+        <li><a ui-sref="manila.lists">Home</a></li>
         <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
         <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
-        <li ng-show="signedIn()"><a href="#/">Welcome, {{ user.user.username }}</a></li>
-        <li ng-show="signedIn()"><a href="#/lists" ng-click="logout()">Log Out</a></li>
+        <li ng-show="signedIn()"><a ui-sref="manila.user" >Welcome, {{ user.user.username }}</a></li>
+        <li ng-show="signedIn()"><a href="#/" ui-sref="manila" ng-click="logout()">Log Out</a></li>
        
 
       </ul>
