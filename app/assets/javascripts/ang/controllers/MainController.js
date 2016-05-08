@@ -11,7 +11,6 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
     $scope.map     = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12,
       tempevents: { "click" : 
       function (map, eventname, originalEventArgs) { 
-        //alert(maps.latLng)
         var e = originalEventArgs[0];
         var tlat = e.latLng.lat(),tlon = e.latLng.lng();
         var tmarker = {
@@ -36,15 +35,12 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
             longitude: lon
           }
         };
-        //$scope.map.markers.push(marker);
         var tag = ('"' + marker.key + ',' + marker.coords.latitude + ',' + marker.coords.longitude + '"');
         console.log(tag);
         var key = marker.id;
         var lat = marker.coords.latitude;
         var lon = marker.coords.longitude;
         //console.log(key, lat, lon);
-        //document.css("#location-input").text(tag.latitude);
-        //$scope.list.list_item.location = tag.latitude;
         $rootScope.$broadcast('keydata', key);
         $rootScope.$broadcast('latdata', lat);
         $rootScope.$broadcast('londata', lon);
@@ -55,8 +51,6 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
     },
     options: { scrollwheel: true }
     //debugger;
-    //$scope.getpos = function(event) {
-    //alert(event.latLng);
     };
   });
 

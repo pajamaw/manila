@@ -1,5 +1,4 @@
-module Api
-    class ListsController <ApplicationController
+  class Api::ListsController <ApplicationController
       before_filter :authenticate_user!, only: [:create]
     def index
       @lists = List.all
