@@ -20,67 +20,49 @@
   <div class="row">
 
     <div class="col-xs-4">
-    <div class="list-group">
-      <a  ng-repeat="list in ctrl.lists.lists | filter :search" ng-class="{'active' : currentShow === list}" class="list-group-item" ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
-    
-    </div>
-
-    
-    <!--<form ng-submit="ctrl.addList(ctrl.list)"
-        >
-        <h3>Add a new list</h3>
-
-        <div class="form-group">
-          <input type="text"
-          ng-pristine
-          class="form-control"
-          placeholder="Title"
-          ng-model="ctrl.list.title"></input>
-        <button type="submit" class="btn btn-primary">Create</button>
+      <div class="list-group">
+        <a  ng-repeat="list in ctrl.lists.lists | filter :search" ng-class="{'active' : currentShow === list}" class="list-group-item" ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
+      
       </div>
-      </form>-->
+
     </div>
 
 
       <div class="col-xs-4">
-      <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists" ng-show="list === currentShow" ng-model="list.list_items">
+        <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists" ng-show="list === currentShow" ng-model="list.list_items">
         
-        <h3>{{list.title}}</h3>                                                                                                                                    
+          <h3>{{list.title}}</h3>                                                                                                                                    
 
-        <li class="list-group-item" ng-repeat="list_item in list.list_items | filter :search">
+          <li class="list-group-item" ng-repeat="list_item in list.list_items | filter :search">
 
-          <h4 class="list-group-item-heading" >{{list_item.title}}</h4>
+            <h4 class="list-group-item-heading" >{{list_item.title}}</h4>
 
-          <p class="list-group-item-text">Finishing Before: {{list_item.date | date: mm-DD-yyyy}}</p>
+            <p class="list-group-item-text">Finishing Before: {{list_item.date | date: mm-DD-yyyy}}</p>
 
 
-          <p class="list-group-item-text">Description: {{list_item.description}}</p>
+            <p class="list-group-item-text">Description: {{list_item.description}}</p>
+            
+            <a  type="submit"  e-ng-options="s.value as s.text for s in completed" >{{showStatus(list_item)}}</a>
+
           
-          <a  type="submit"  e-ng-options="s.value as s.text for s in completed" >{{showStatus(list_item)}}</a>
-
+          </li>
         
-        </li>
-      
-      </ol>
-
-    </div>
-    <div class="col-xs-4">
-          <div > 
-      <div id="map_canvas">
-
-        <ui-gmap-google-map center="map.center" options="map.options" zoom="map.zoom" tempevents="map.tempevents"> 
-          <ui-gmap-marker ng-repeat="m in currentShow.list_items" coords="{latitude: m.latitude, longitude: m.longitude}" icon="m.icon" idkey="m.gmapkey">
-          </ui-gmap-marker>
-        </ui-gmap-google-map>
-
-        <!--<ui-gmap-google-map ng-if="currentShow.user.id === ctrl.user.user.id" center="map.center" options="map.options" zoom="map.zoom"events="map.tempevents"> 
-          <ui-gmap-marker ng-if="currentShow.user.id === ctrl.user.user.id" ng-repeat="m in currentShow.list_items" coords="{latitude: m.latitude, longitude: m.longitude}" icon="m.icon" idkey="m.gmapkey">
-          </ui-gmap-marker>
-        </ui-gmap-google-map>-->
+        </ol>
 
       </div>
-    </div>
-  </div>
+      
+      <div class="col-xs-4">
+        <div> 
+          <div id="map_canvas">
+
+            <ui-gmap-google-map center="map.center" options="map.options" zoom="map.zoom" tempevents="map.tempevents"> 
+              <ui-gmap-marker ng-repeat="m in currentShow.list_items" coords="{latitude: m.latitude, longitude: m.longitude}" icon="m.icon" idkey="m.gmapkey">
+              </ui-gmap-marker>
+            </ui-gmap-google-map>
+
+          </div>
+        </div>
+      </div>
 </div>
 
 

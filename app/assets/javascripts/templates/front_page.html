@@ -34,7 +34,11 @@
           ng-pristine
           class="form-control"
           placeholder="Title"
-          ng-model="ctrl.list.title"></input>
+          ng-model="ctrl.list.title" required></input>
+          <div role="alert">
+            <span class="error" ng-show="input.$error.required">
+         Required!</span>
+        </div>
         <button type="submit" class="btn btn-primary">Create</button>
       </div>
       </form>
