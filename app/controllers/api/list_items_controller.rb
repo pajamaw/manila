@@ -1,5 +1,5 @@
   class Api::ListItemsController < ApplicationController
-    before_filter :authenticate_user!, only: [:create]
+    before_filter :authenticate_user!, only: [:create, :update, :destroy]
 
     def index
       render json: list.list_items

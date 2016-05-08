@@ -1,5 +1,5 @@
   class Api::ListsController <ApplicationController
-      before_filter :authenticate_user!, only: [:create]
+      before_filter :authenticate_user!, only: [:create, :update, :destroy]
     def index
       @lists = List.all
       render json: @lists
@@ -38,4 +38,3 @@
       params.require(:list).permit(:title, :list_items => [])
     end
   end
-end

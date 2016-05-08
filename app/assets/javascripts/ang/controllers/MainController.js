@@ -106,12 +106,12 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
 
   $scope.completed = [
     {value: 1, text: 'Completed!'},
-    {value: 0, text: 'Get to it!'}
+    {value: 0, text: 'In Progress!'}
   ]; 
 
   $scope.showStatus = function(list_item) {
     var selected = $filter('filter')($scope.completed, {value: list_item.completed});
-    return (list_item.completed ) ? 'Completed!' : 'Get to it!';
+    return (list_item.completed ) ? 'Completed' : 'In Progress!';
   };
 
 
