@@ -8,7 +8,7 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
     });
 
   uiGmapGoogleMapApi.then(function(maps) {
-    $scope.map     = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12,
+    $scope.map = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12,
       tempevents: { "click" : 
       function (map, eventname, originalEventArgs) { 
         var e = originalEventArgs[0];
@@ -20,7 +20,6 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
             longitude: tlon
           }
         };
-        alert(tmarker);
       }
     },
     events: { "click" : 
@@ -102,7 +101,6 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
 
     $scope.currentShow = i;
   };
-  //ctrl.list = new List();
 
   $scope.completed = [
     {value: 1, text: 'Completed!'},
@@ -117,14 +115,8 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
 
   ctrl.addList = function( newList){
     List.save(newList, function(){
-        //success: 
-        //{
           ctrl.updateLists(); 
-          //ctrl.lists = List.query();
           ctrl.list = new List();
-          //$state.go($state.current, {}, {reload: false});
-
-        //};
     });
   };
 
