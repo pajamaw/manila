@@ -13,11 +13,14 @@
     <input type="search" class="form-control" placeholder="Search by username, list title, item title, description or location" ng-model="search">
     </div>
 
+
+
+
   <div class="row">
 
     <div class="col-xs-4">
     <div class="list-group">
-      <a ui-sref="manilla.listsadd({id: list.id})" ng-repeat="list in ctrl.user.user.lists | filter :search" ng-class="{'active' : currentShow === list}" class="list-group-item" ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
+      <a ui-sref="manilla.listsadd({id: list.id})" ng-repeat="list in ctrl.lists.lists | filter :search" ng-if="list.user.id === ctrl.user.user.id" ng-class="{'active' : currentShow === list}" class="list-group-item" ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
     
     </div>
 

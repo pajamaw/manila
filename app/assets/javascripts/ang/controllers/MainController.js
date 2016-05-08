@@ -99,6 +99,7 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
   ctrl.updateLists = function(){
     List.query( function (data){
       ctrl.lists = data;
+      //debugger;
     });
   };
 
