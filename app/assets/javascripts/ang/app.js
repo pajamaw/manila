@@ -40,7 +40,7 @@ app.config(function($stateProvider, $urlRouterProvider ) {
       controller: 'AuthController',
       onEnter: ['$state', 'Auth', function($state, Auth){
         Auth.currentUser().then(function(){
-          $state.go('/lists');
+          $state.go('manilla');
         })
       }]
     })
@@ -50,9 +50,9 @@ app.config(function($stateProvider, $urlRouterProvider ) {
       controller: 'AuthController',
       onEnter: ['$state', 'Auth', function($state, Auth){
         Auth.currentUser().then(function(){
-          $state.go('/lists');
+          $state.go('manilla');
         })
       }]
     });
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/lists');
 });
