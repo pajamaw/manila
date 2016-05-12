@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
   def index
   end
 
-  # def angular
-  #   render 'layouts/application'
-  # end
-
   private
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username

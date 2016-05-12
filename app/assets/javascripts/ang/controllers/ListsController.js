@@ -20,7 +20,6 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
   ctrl.updateListItems = function (){
     List.query(function (data){
       ctrl.lists = data;
-     // debugger;
     });
 
   };
@@ -55,35 +54,9 @@ function ListsController($scope, ListItem, List, $stateParams, $state, $location
                         // aka they equal the resouce of 70 items
        $scope.$emit('update_parent_controller', ctrl.updateListItems());
        ctrl.list_item = new ListItem();
-                        //all_list_items = 69 items
-      //  debugger;
-          //new_item = data.list_items[data.list_items.length -1]
-          //we see ctrl.list.list.list_items is defined here and = 69
-         // ctrl.list.list.list_items.push(new_item);
-            //$rootScope.$apply();
-          //ctrl.list_items = ListItem.query({list_id: $stateParams.id, id: data.list_items.slice(-1)[0].id});
-          //debugger;
-          //no longer defined at ctrl.list.list.list_items
-                  //debugger;
-          //ctrl.list_items = ListItem.query({list_id: new_item.list_id});
-          //ctrl.list_item = new ListItem();
-                           /// debugger;
-                           ///ctrl.list_item = new ListItem();
-          //all_list_items = data.list_items;
-                        //    debugger;
-
-          //all_list_items.push(new_item);
-                            //debugger;
-          //ctrl.list_items.unshift(data.list_items);
-
-                   //    debugger;
-                 // debugger;
     });
 
 
   };
-  //ctrl.updateLists();
-  //$scope.$emit(ctrl.updateListItems());
 
-  //debugger;
 }
