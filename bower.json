@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "bootstrap-checkbox": "^1.4.0",
-    "angular-google-maps": "^2.3.2"
+    "angular-google-maps": "^2.3.2",
+    "angular-ui-router": "ui-router#^0.2.18"
   }
 }
