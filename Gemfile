@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'taps'
+gem 'rails_12factor'
 gem 'rails'
 gem 'bower-rails'
 gem 'jquery-rails'
