@@ -12,7 +12,7 @@ app.config(function(uiGmapGoogleMapApiProvider){
 });
 
 app.config(function($stateProvider, $urlRouterProvider ) {
-  
+
   $stateProvider
     .state('manila', {
       url: '/',
@@ -54,5 +54,5 @@ app.config(function($stateProvider, $urlRouterProvider ) {
         })
       }]
     });
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/lists');
 });
