@@ -1,22 +1,17 @@
-
 <h4>{{ctrl.user.user.username}}</h4>
-
-
-
-
- <div class="input-group">
-    <span class="input-group-btn">
+<div class="input-group">
+  <span class="input-group-btn">
     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-    </span>
-    <input type="search" class="form-control" placeholder="Search by username, list title, item title, description or location" ng-model="search">
-    </div>
-
+  </span>
+  <input type="search" class="form-control" placeholder="Search by username, list title, item title, description or location" ng-model="search">
+</div>
+<br/>
   <div class="row">
 
     <div class="col-xs-4">
     <div class="list-group">
       <a ui-sref="manila.user.listsadd({id: list.id})" ng-repeat="list in ctrl.lists.lists | filter :search" ng-if="list.user.id === ctrl.user.user.id" ng-class="{'active' : currentShow === list}" class="list-group-item" ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
-    
+
     </div>
 
     <button ng-show="!showListForm" class="btn btn-primary btn-sm" ng-click="showListForm = !showListForm">Add New List</button>
@@ -47,7 +42,7 @@
 
       <div class="col-xs-4">
       <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists" ng-show="list === currentShow" ng-model="list.list_items">
-        
+
         <h3 ng-if="(currentShow.user.id === ctrl.user.user.id)" editable-text="list.title" onaftersave="ctrl.editListTitle(list)">{{list.title}}</h3>                                                                                                                                                            <button type="button" class="btn btn-primary btn-sm" ng-if="(currentShow.user.id === ctrl.user.user.id)" ng-click="ctrl.removeList($index, list)">X</button></h3>
         </li>
 
@@ -59,7 +54,7 @@
 
 
 
-        
+
 
           <p ng-if="(currentShow.user.id === ctrl.user.user.id)" editable-text="list_item.date" onaftersave="ctrl.editListItemDate(list_item)" class="list-group-item-text">
             Finishing Before: {{list_item.date | date: mm-DD-yyyy}}</p>
@@ -75,12 +70,12 @@
 
           <button type="button" class="btn btn-primary btn-sm" ng-if="(currentShow.user.id === ctrl.user.user.id)" ng-click="ctrl.removeListItem($index, list_item, list)">X</button>
 
-          
+
           <a  ng-if="(currentShow.user.id === ctrl.user.user.id)" type="submit" editable-radiolist="list_item.completed" e-ng-options="s.value as s.text for s in completed" onaftersave="ctrl.editListItemStatus(list_item)">{{showStatus(list_item)}}</a>
 
-  
+
         </li>
-        
+
           <!--<a editable-checkbox="list_item.completed" e-title="Completed?" onaftersave="ctrl.editListItemStatus(list_item)">{{ctrl.showStatus(list_item)}}</a>-->
         <!--<button ng-if="currentShow.user.id === ctrl.user.user.id" id="show-addform" value="Add" ng-click="addform=!addform" />-->
         <div ng-if="currentShow.user.id === ctrl.user.user.id" ui-view></ui-view>
@@ -88,11 +83,11 @@
 
     </div>
     <div class="col-xs-4">
-          <div > 
+          <div >
       <div id="map_canvas">
 
 
-        <ui-gmap-google-map center="map.center" options="map.options" zoom="map.zoom" events="map.events"> 
+        <ui-gmap-google-map center="map.center" options="map.options" zoom="map.zoom" events="map.events">
           <ui-gmap-marker ng-if="currentShow.user.id === ctrl.user.user.id" ng-repeat="m in currentShow.list_items" coords="{latitude: m.latitude, longitude: m.longitude}" icon="m.icon" idkey="m.gmapkey">
           </ui-gmap-marker>
         </ui-gmap-google-map>

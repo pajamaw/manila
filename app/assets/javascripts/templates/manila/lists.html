@@ -1,28 +1,28 @@
-
-
-    <div class="input-group">
+<section class="search-bar">
+  <h4></h4>
+  <div class="input-group">
     <span class="input-group-btn">
-    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+      <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
     </span>
     <input type="search" class="form-control" placeholder="Search by username, list title, item title, description or location" ng-model="search">
-    </div>
+  </div>
+</section>
+<br/>
+<div class="row">
 
-
-  <div class="row">
-
-    <div class="col-xs-4">
-      <div class="list-group">
-        <a  ng-repeat="list in ctrl.lists.lists | filter :search" ng-class="{'active' : currentShow === list}" class="list-group-item" ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
-      
-      </div>
+  <div class="col-xs-4">
+    <div class="list-group">
+      <a  ng-repeat="list in ctrl.lists.lists | filter :search" ng-class="{'active' : currentShow === list}" class="list-group-item" ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
 
     </div>
+
+  </div>
 
 
       <div class="col-xs-4">
         <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists" ng-show="list === currentShow" ng-model="list.list_items">
-        
-          <h3>{{list.title}}</h3>                                                                                                                                    
+
+          <h3>{{list.title}}</h3>
 
           <li class="list-group-item" ng-repeat="list_item in list.list_items | filter :search">
 
@@ -32,21 +32,21 @@
 
 
             <p class="list-group-item-text">Description: {{list_item.description}}</p>
-            
+
             <a  type="submit"  e-ng-options="s.value as s.text for s in completed" >{{showStatus(list_item)}}</a>
 
-          
+
           </li>
-        
+
         </ol>
 
       </div>
 
       <div class="col-xs-4">
-        <div> 
+        <div>
           <div id="map_canvas">
 
-            <ui-gmap-google-map center="map.center" options="map.options" zoom="map.zoom" tempevents="map.tempevents"> 
+            <ui-gmap-google-map center="map.center" options="map.options" zoom="map.zoom" tempevents="map.tempevents">
               <ui-gmap-marker ng-repeat="m in currentShow.list_items" coords="{latitude: m.latitude, longitude: m.longitude}" icon="m.icon" idkey="m.gmapkey">
               </ui-gmap-marker>
             </ui-gmap-google-map>
@@ -55,5 +55,3 @@
         </div>
       </div>
 </div>
-
-

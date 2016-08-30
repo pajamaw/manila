@@ -7,5 +7,6 @@
 //= require angular-simple-logger
 //= require angular-google-maps
 //= require jquery
+//= require bootstrap-sprockets
 //= require angular-xeditable
 //= require_tree .
