@@ -11,19 +11,18 @@
 
 <div class="row">
 
-  <div class="col-md-4">
+  <div class="col-xs-4">
 
     <div class="list-group">
 
-      <a  ng-repeat="list in ctrl.lists.lists | filter :search" ng-class="{'active' : currentShow === list}" class="list-group-item"
-      ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
+      <a ng-repeat="list in ctrl.lists | filter :search" ng-class="{'active' : currentShow === list}" class="list-group-item" ng-click="changeTodo(list)">{{list.title}} - by {{list.user.username}}<span class="badge">{{list.list_items.length}}</span></a>
 
     </div>
 
   </div>
 
-  <div class="col-md-4">
-    <ol class="list-unstyled" ng-repeat="list in ctrl.lists.lists" ng-show="list === currentShow" ng-model="list.list_items">
+  <div class="col-xs-4">
+    <ol class="list-unstyled" ng-repeat="list in ctrl.lists" ng-show="list === currentShow" ng-model="list.list_items">
 
       <h3 class="title well">{{list.title}}</h3>
       <li class="list-group-item" ng-repeat="list_item in list.list_items | filter :search">
@@ -36,7 +35,7 @@
       </li>
     </ol>
   </div>
-  <div class="col-md-4">
+  <div class="col-xs-4">
     <div>
       <div id="map_canvas">
 

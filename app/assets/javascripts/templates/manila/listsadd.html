@@ -5,7 +5,7 @@
 <button ng-show="showlistitemform" class="btn btn-primary btn-sm" ng-click="showlistitemform = !showlistitemform">Hide</button>
 
   <div ng-show="showlistitemform" id="listitemform">
-  <form ng-submit="ctrl.addListItem(ctrl.list_item)"
+  <form class="well" ng-submit="ctrl.addListItem(ctrl.list_item)"
     style="margin-top:30px;">
     <h4>Add another item</h4>
     <div class="form-group">
@@ -48,6 +48,4 @@
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
 </div>
-  
-
-
+</div>

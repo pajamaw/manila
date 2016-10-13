@@ -54,5 +54,5 @@ app.config(function($stateProvider, $urlRouterProvider ) {
         })
       }]
     });
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/lists');
 });

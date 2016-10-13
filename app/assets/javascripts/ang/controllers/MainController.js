@@ -5,12 +5,13 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
   Auth.currentUser()
     .then(function(user) {
       ctrl.user = user;
+      console.log(ctrl.user)
     });
 
   uiGmapGoogleMapApi.then(function(maps) {
     $scope.map = { center: { latitude: 40.783435, longitude: -73.966249 }, zoom: 12,
-      tempevents: { "click" : 
-      function (map, eventname, originalEventArgs) { 
+      tempevents: { "click" :
+      function (map, eventname, originalEventArgs) {
         var e = originalEventArgs[0];
         var tlat = e.latLng.lat(),tlon = e.latLng.lng();
         var tmarker = {
@@ -22,8 +23,8 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
         };
       }
     },
-    events: { "click" : 
-      function (map, eventname, originalEventArgs) { 
+    events: { "click" :
+      function (map, eventname, originalEventArgs) {
         //alert(maps.latLng)
         var e = originalEventArgs[0];
         var lat = e.latLng.lat(),lon = e.latLng.lng();
@@ -85,19 +86,21 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
 
   ctrl.removeList = function (index, list){
 
-    ctrl.lists.lists.splice(index, 1);
+    ctrl.lists.splice(index, 1);
     List.delete({id: list.id});
   };
 
   ctrl.updateLists = function(){
     List.query( function (data){
+      console.log(data)
       ctrl.lists = data;
+      console.log(ctrl.lists)
       //debugger;
     });
   };
 
   $scope.changeTodo = function (i) {
-     console.log(i); 
+     console.log(i);
 
     $scope.currentShow = i;
   };
@@ -105,7 +108,7 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
   $scope.completed = [
     {value: 1, text: 'Completed!'},
     {value: 0, text: 'In Progress!'}
-  ]; 
+  ];
 
   $scope.showStatus = function(list_item) {
     var selected = $filter('filter')($scope.completed, {value: list_item.completed});
@@ -115,7 +118,7 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
 
   ctrl.addList = function( newList){
     List.save(newList, function(){
-          ctrl.updateLists(); 
+          ctrl.updateLists();
           ctrl.list = new List();
     });
   };
@@ -126,4 +129,5 @@ function MainController($scope, $rootScope, List, ListItem, $location, $state, A
   });
 
   ctrl.updateLists();
+  console.log(ctrl.lists)
 }

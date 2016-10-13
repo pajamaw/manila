@@ -8,5 +8,6 @@
 //= require angular-google-maps
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap
 //= require angular-xeditable
 //= require_tree .
